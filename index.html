@@ -8,11 +8,38 @@
 </head>
 <body>
     <div id="china-map"></div>
-    <div id="university-info-container">
-        <!-- 这里将动态显示省份和学生信息 -->
+
+    <!-- 页面左侧上方容器 (甘肃、河北、山东) -->
+    <div id="left-top-containers" class="container-group left-top">
+        <div id="province-甘肃" class="province-container-item" data-province="甘肃" style="display: none;"></div>
+        <div id="province-河北" class="province-container-item" data-province="河北" style="display: none;"></div>
+        <div id="province-山东" class="province-container-item" data-province="山东" style="display: none;"></div>
     </div>
-    <div id="arrows-container">
-        <!-- 这里将动态显示箭头 -->
+
+    <!-- 页面左侧下方容器 (四川、重庆、湖南) -->
+    <div id="left-bottom-containers" class="container-group left-bottom">
+        <div id="province-四川" class="province-container-item" data-province="四川" style="display: none;"></div>
+        <div id="province-重庆" class="province-container-item" data-province="重庆" style="display: none;"></div>
+        <div id="province-湖南" class="province-container-item" data-province="湖南" style="display: none;"></div>
+    </div>
+
+    <!-- 页面右侧容器 (其余省份) -->
+    <div id="university-info-container" class="container-group">
+        <div id="province-吉林" class="province-container-item" data-province="吉林" style="display: none;"></div>
+        <div id="province-天津" class="province-container-item" data-province="天津" style="display: none;"></div>
+        <div id="province-河南" class="province-container-item" data-province="河南" style="display: none;"></div>
+
+        <div id="province-北京" class="province-container-item" data-province="北京" style="display: none;"></div>
+        <div id="province-陕西" class="province-container-item" data-province="陕西" style="display: none;"></div>
+        <div id="province-江苏" class="province-container-item" data-province="江苏" style="display: none;"></div>
+
+        <div id="province-湖北" class="province-container-item" data-province="湖北" style="display: none;"></div>
+        <div id="province-安徽" class="province-container-item" data-province="安徽" style="display: none;"></div>
+
+        <div id="province-上海" class="province-container-item" data-province="上海" style="display: none;"></div>
+
+        <div id="province-广东" class="province-container-item" data-province="广东" style="display: none;"></div>
+        <div id="province-黑龙江" class="province-container-item" data-province="黑龙江" style="display: none;"></div>
     </div>
 
     <script src="js/echarts.min.js"></script>
