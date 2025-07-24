@@ -1,0 +1,125 @@
+/* General styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+#china-map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#university-info-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none; /* Allow map interaction */
+}
+
+/* University Card Styles */
+.university-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 8px 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /*width: 180px; !* Fixed width *!*/
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: auto; /* Enable events for cards */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.university-card.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.university-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.university-header img {
+    width: 100px;  /* Enlarged logo */
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 2px;
+    border: none;
+}
+
+.university-header h4 {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.student-list {
+    color: #555;
+    font-size: 11px;
+    line-height: 1.5;
+    padding-left: 5px;
+}
+
+.student-count {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 5px;
+}
+
+/* Arrow Styles */
+#arrows-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.arrow-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.arrow-line.visible {
+    opacity: 0.8;
+}
+
+.arrow-line svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.arrow-line path {
+    stroke: #007bff;
+    stroke-width: 1.5;
+    fill: none;
+    marker-end: url(#arrowhead);
+}
