@@ -5,13 +5,25 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background-color: #f0f2f5;
+    background: url('../images/Background.jpg') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
 }
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(240, 242, 245, 0.3);
+    z-index: 0;
+}
+
 #china-map {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -21,22 +33,28 @@ body {
 #university-info-container {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    pointer-events: none; /* Allow map interaction */
+    left: 50%;
+    width: 50%;
+    height: 100vh;
+    z-index: 10;
+    pointer-events: none;
+    overflow-y: auto; /* 允许垂直滚动 */
 }
 
 /* University Card Styles */
 .university-card {
     position: absolute;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 8px 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    /*width: 180px; !* Fixed width *!*/
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    max-width: 200px; /* 最大宽度 */
+    max-height: 100px; /* 最大高度 */
+    min-width: 150px; /* 最小宽度 */
+    min-height: 80px; /* 最小高度 */
+    width: auto; /* 自适应宽度 */
+    height: auto; /* 自适应高度 */
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -44,11 +62,18 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    overflow: hidden; /* 防止内容溢出卡片 */
 }
 
 .university-card.visible {
     opacity: 1;
     transform: scale(1);
+}
+
+.university-card .student-count {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 5px;
 }
 
 .university-header {
@@ -75,19 +100,6 @@ body {
     flex-grow: 1;
 }
 
-.student-list {
-    color: #555;
-    font-size: 11px;
-    line-height: 1.5;
-    padding-left: 5px;
-}
-
-.student-count {
-    font-weight: bold;
-    color: #007bff;
-    margin-right: 5px;
-}
-
 /* Arrow Styles */
 #arrows-container {
     position: absolute;
@@ -95,7 +107,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 5;
     pointer-events: none;
 }
 
@@ -122,4 +134,144 @@ body {
     stroke-width: 1.5;
     fill: none;
     marker-end: url(#arrowhead);
+}
+
+/* 省份容器样式 - 自适应尺寸 */
+.province-container-item {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #d0d0d0;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+    pointer-events: auto;
+    max-width: 340px;
+    min-width: 200px;
+    width: auto; /* 自适应宽度 */
+    max-height: 400px;
+    min-height: 150px;
+    height: auto; /* 自适应高度 */
+    overflow: hidden;
+}
+
+.province-container-item.visible {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+.province-container-item h2 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 6px;
+}
+
+.universities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.universities-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.universities-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+
+.universities-list::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 2px;
+}
+
+/* 大学卡片新样式 */
+.university-item {
+    background: rgba(248, 249, 250, 0.9);
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.university-card-layout {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.university-logo {
+    width: 100px !important;
+    height: 50px !important;
+    object-fit: contain;
+    border-radius: 6px;
+    background: white;
+    padding: 3px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.university-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.university-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.university-header h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.university-header .student-count {
+    font-size: 11px;
+    color: #007bff;
+    font-weight: 500;
+    background: rgba(0, 123, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.student-names {
+    font-size: 10px;
+    color: #333;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 限制为最多两行 */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+/* 默认提示信息 */
+.default-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    font-weight: 300;
 }
