@@ -478,6 +478,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 type: 'select',
                 name: provinceName
             });
+            hideDynamicContainers();
 
             // 显示选中省份的动态容器
             hideFirstSetContainers();
