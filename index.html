@@ -9,6 +9,7 @@
 <body>
     <div id="china-map"></div>
 
+    <!-- 第一套容器：桌面端固定位置显示 -->
     <!-- 页面左侧上方容器 (甘肃、河北、山东) -->
     <div id="left-top-containers" class="container-group left-top">
         <div id="province-甘肃" class="province-container-item" data-province="甘肃" style="display: none;"></div>
@@ -41,6 +42,9 @@
         <div id="province-广东" class="province-container-item" data-province="广东" style="display: none;"></div>
         <div id="province-黑龙江" class="province-container-item" data-province="黑龙江" style="display: none;"></div>
     </div>
+
+    <!-- 第二套容器：动态显示在省份旁边 -->
+    <div id="dynamic-containers"></div>
 
     <script src="js/echarts.min.js"></script>
     <script src="js/data.js"></script>
